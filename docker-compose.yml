@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  kafka:
+    image: ches/kafka
+    depends_on:
+      - zookeeper
+    environment:
+      ZOOKEEPER_IP: zookeeper
+    ports:
+      - '9092:9092' 
+
+  zookeeper:
+    image: zookeeper:3.4
+    restart: unless-stopped
+    ports:
+      - '2181:2181'
